@@ -1,7 +1,11 @@
-﻿namespace SDP.TDD
+﻿using NUnit.Framework;
+
+namespace SDP.TDD
 {
+    [TestFixture]
     public class PasswordVerifier_Tests
     {
+        
     }
 
     public class PasswordVerifier

@@ -22,7 +22,10 @@ namespace SDP.TDD
     {
         public void Verify(string password)
         {
-
+            if(password.Length <= 8)
+            {
+                throw new Exception();
+            }
         }
     }
 }

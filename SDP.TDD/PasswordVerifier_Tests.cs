@@ -16,7 +16,18 @@ namespace SDP.TDD
 
             var exception = Assert.Throws<Exception>(() => verify(password));
             Assert.AreEqual(PasswordVerifier.PasswordTooShortErrorMsg, exception.Message);
-        }   
+        }
+
+        [Test]
+        public void Verify_WhenPasswordIsNull_Throws()
+        {
+            var passwordVerifier = new PasswordVerifier();
+            string password = null;
+
+            Action<string> verify = passwordVerifier.Verify;
+
+            var exception = Assert.Throws<Exception>(() => verify(password));
+        }
     }
 
     public class PasswordVerifier

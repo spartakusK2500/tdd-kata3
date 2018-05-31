@@ -25,7 +25,7 @@ namespace SDP.TDD
         {
             if(password.Length <= 8)
             {
-                throw new Exception();
+                throw new Exception("Password too short!");
             }
         }
     }

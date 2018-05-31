@@ -14,7 +14,8 @@ namespace SDP.TDD
 
             Action<string> verify = passwordVerifier.Verify;
 
-            Assert.Throws<Exception>(() => verify(password));
+            var exception = Assert.Throws<Exception>(() => verify(password));
+            Assert.AreEqual("Password too short!", exception.Message);
         }   
     }
 

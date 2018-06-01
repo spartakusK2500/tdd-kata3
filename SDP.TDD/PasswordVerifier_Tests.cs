@@ -27,14 +27,20 @@ namespace SDP.TDD
             Action<string> verify = passwordVerifier.Verify;
 
             var exception = Assert.Throws<Exception>(() => verify(password));
+            Assert.AreEqual(PasswordVerifier.PasswordIsNullErrorMsg, exception.Message);
         }
     }
 
     public class PasswordVerifier
     {
         public const string PasswordTooShortErrorMsg = "Password too short!";
+        public const string PasswordIsNullErrorMsg = "Password is null!";
         public void Verify(string password)
         {
+            if(password == null)
+            {
+                throw new Exception();
+            }
             if(password.Length <= 8)
             {
                 throw new Exception(PasswordTooShortErrorMsg);

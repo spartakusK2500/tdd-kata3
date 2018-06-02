@@ -42,7 +42,7 @@ namespace SDP.TDD
             {
                 throw new Exception(PasswordIsNullErrorMsg);
             }
-            if(password.Length <= 8)
+            if(password == null || password.Length <= 8)
             {
                 throw new Exception(PasswordTooShortErrorMsg);
             }

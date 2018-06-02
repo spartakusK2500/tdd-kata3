@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Linq;
 
 namespace SDP.TDD
 {
@@ -60,8 +61,12 @@ namespace SDP.TDD
             {
                 errorMessage += PasswordTooShortErrorMsg;
             }
+            if (password == null || !password.Any(char.IsUpper))
+            {
+                errorMessage += PasswordHasNoUppercase;
+            }
 
-            if(!string.IsNullOrEmpty(errorMessage))
+            if (!string.IsNullOrEmpty(errorMessage))
             {
                 throw new Exception(errorMessage);
             }

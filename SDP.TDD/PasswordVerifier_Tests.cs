@@ -57,6 +57,18 @@ namespace SDP.TDD
             var exception = Assert.Throws<Exception>(() => verify(password));
             StringAssert.Contains(PasswordVerifier.PasswordHasNoLowercase, exception.Message);
         }
+
+        [Test]
+        [TestCase(null)]
+        public void Verify_WhenPasswordHasNoNumber_Throws(string password)
+        {
+            var passwordVerifier = new PasswordVerifier();
+
+            Action<string> verify = passwordVerifier.Verify;
+
+            var exception = Assert.Throws<Exception>(() => verify(password));
+            StringAssert.Contains(PasswordVerifier.PasswordHasNoNumber, exception.Message);
+        }
     }
 
     public class PasswordVerifier
@@ -65,6 +77,7 @@ namespace SDP.TDD
         public const string PasswordIsNullErrorMsg = "Password is null!";
         public const string PasswordHasNoUppercase = "Password has no uppercase letter!";
         public const string PasswordHasNoLowercase = "Password has no lowercase letter!";
+        public const string PasswordHasNoNumber = "Password has no number letter!";
         public void Verify(string password)
         {
             var errorMessage = string.Empty;

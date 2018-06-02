@@ -97,6 +97,10 @@ namespace SDP.TDD
             {
                 errorMessage += PasswordHasNoLowercase;
             }
+            if (password == null || !password.Any(char.IsDigit))
+            {
+                errorMessage += PasswordHasNoNumber;
+            }
 
             if (!string.IsNullOrEmpty(errorMessage))
             {

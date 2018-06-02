@@ -29,14 +29,14 @@ test:
         cwd: SDP.TDD
         code: |
           dotnet test
-# deploy:
-#   steps:
-#     - internal/docker-push:
-#         repository: marcinprzybylski/sdp.tdd
-#         tag: latest, 1.0
-#         username: $USERNAME
-#         password: $PASSWORD
-#         registry: https://registry.hub.docker.com/v2
-#         entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
-#         ports: "80"
+deploy:
+  steps:
+    - internal/docker-push:
+        repository: marcinprzybylski/sdp.tdd
+        tag: latest, 1.0
+        username: $USERNAME
+        password: $PASSWORD
+        registry: https://registry.hub.docker.com/v2
+        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
+        # ports: "80"
 # env: "ASPNETCORE_URLS=http://+:80"

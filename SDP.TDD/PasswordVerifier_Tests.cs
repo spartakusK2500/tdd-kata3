@@ -7,10 +7,11 @@ namespace SDP.TDD
     public class PasswordVerifier_Tests
     {
         [Test]
-        public void Verify_WhenPasswordNotLargerThan8_Throws()
+        [TestCase(null)]
+        [TestCase("12345678")]
+        public void Verify_WhenPasswordNotLargerThan8_Throws(string password)
         {
             var passwordVerifier = new PasswordVerifier();
-            var password = "12345678";
 
             Action<string> verify = passwordVerifier.Verify;
 

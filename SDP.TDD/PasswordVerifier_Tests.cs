@@ -16,7 +16,7 @@ namespace SDP.TDD
             Action<string> verify = passwordVerifier.Verify;
 
             var exception = Assert.Throws<Exception>(() => verify(password));
-            Assert.AreEqual(PasswordVerifier.PasswordTooShortErrorMsg, exception.Message);
+            StringAssert.Contains(PasswordVerifier.PasswordTooShortErrorMsg, exception.Message);
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace SDP.TDD
             Action<string> verify = passwordVerifier.Verify;
 
             var exception = Assert.Throws<Exception>(() => verify(password));
-            Assert.AreEqual(PasswordVerifier.PasswordIsNullErrorMsg, exception.Message);
+            StringAssert.Contains(PasswordVerifier.PasswordIsNullErrorMsg, exception.Message);
         }
     }
 
@@ -38,13 +38,19 @@ namespace SDP.TDD
         public const string PasswordIsNullErrorMsg = "Password is null!";
         public void Verify(string password)
         {
+            var errorMessage = string.Empty;
             if(password == null)
             {
-                throw new Exception(PasswordIsNullErrorMsg);
+                errorMessage += PasswordIsNullErrorMsg;
             }
             if(password == null || password.Length <= 8)
             {
-                throw new Exception(PasswordTooShortErrorMsg);
+                errorMessage += PasswordTooShortErrorMsg;
+            }
+
+            if(!string.IsNullOrEmpty(errorMessage))
+            {
+                throw new Exception(errorMessage);
             }
         }
     }

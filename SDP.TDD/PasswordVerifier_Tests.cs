@@ -80,6 +80,10 @@ namespace SDP.TDD
             {
                 errorMessage += PasswordHasNoUppercase;
             }
+            if (password == null || !password.Any(char.IsLower))
+            {
+                errorMessage += PasswordHasNoLowercase;
+            }
 
             if (!string.IsNullOrEmpty(errorMessage))
             {

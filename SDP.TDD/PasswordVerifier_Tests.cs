@@ -34,6 +34,7 @@ namespace SDP.TDD
 
         [Test]
         [TestCase(null)]
+        [TestCase("12345678")]
         public void Verify_WhenPasswordHasNoUppercase_Throws(string password)
         {
             var passwordVerifier = new PasswordVerifier();
